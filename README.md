@@ -3,6 +3,105 @@
 For more details, please visit:
 > [TODO](https://)
 
+## User Registration & Authentication 
+##### Register new User : localhost:8080/api/auth/signup
+> Request Body
+```
+{
+	"name": "user1",
+	"username": "user1name",
+	"email": "user1@blabla.com",
+	"role": ["ROLE_USER"],
+	"password": "123qwe"
+}
+```
+> Response
+```
+{
+  "user": {
+    "id": 4,
+    "name": "test",
+    "username": "usertest",
+    "email": "test@blabla.com",
+    "password": "",
+    "roles": [
+      {
+        "id": 1,
+        "name": "ROLE_USER"
+      }
+    ]
+  },
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGJsYWJsYS5jb20iLCJpYXQiOjE1OTUwOTcyMDYsImV4cCI6MTU5NTE4MzYwNn0.v8iYp2QZSyskxLCm_zW2FJhk5HjeATOF7qTOq-be5NJIaNPGgLf2BKO-czRjW4P2k4BrmnGRwABSPWzW2SC3mQ",
+  "type": "Bearer",
+  "message": "Sign-Up Successful, welcome usertest !"
+}
+```
+user_id |email             |username |user_role_id |user_id |role_id |role_name  |
+--------|------------------|---------|-------------|--------|--------|-----------|
+1       |aivars@blabla.com |Aivars   |1            |1       |1       |ROLE_USER  |
+2       |admin@blabla.com  |admin    |2            |2       |3       |ROLE_ADMIN |
+3       |pm@blabla.com     |pm       |3            |3       |2       |ROLE_PM    |
+4       |test@blabla.com   |usertest |4            |4       |1       |ROLE_USER  |
+
+##### Login with existing User : localhost:8080/api/auth/signin
+> Request Body
+```
+{
+	"username": "usertest",
+	"password": "123qwe"
+}
+ ```
+> Response
+```
+{
+    "user": {
+        "id": 4,
+        "name": "test",
+        "username": "usertest",
+        "email": "test@blabla.com",
+        "password": "",
+        "roles": [
+            {
+                "id": 1,
+                "name": "ROLE_USER"
+            }
+        ]
+    },
+    "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGJsYWJsYS5jb20iLCJpYXQiOjE1OTUwOTgyMDIsImV4cCI6MTU5NTE4NDYwMn0.57Z2jgmE5WSxxgiD-qbs3j063CgpDxrbQWJGBMZPBPnKYZn-sbEHHmm98LeHep3pPYDk8PZeGk4sP9LDGDxWqg",
+    "type": "Bearer",
+    "message": "Log-In Successful, welcome usertest !"
+}
+```
+##### Testing APIs
+- localhost:8080/api/test/user
+- localhost:8080/api/test/pm
+- localhost:8080/api/test/admin
+
+> Example - Trying to get Admin access with the "usertest" JWT Token : localhost:8080/api/test/admin
+```
+Request Headers:
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGJsYWJsYS5jb20iLCJpYXQiOjE1OTUwOTgyMDIsImV4cCI6MTU5NTE4NDYwMn0.57Z2jgmE5WSxxgiD-qbs3j063CgpDxrbQWJGBMZPBPnKYZn-sbEHHmm98LeHep3pPYDk8PZeGk4sP9LDGDxWqg
+```
+> Response
+```
+{
+    "timestamp": "2020-07-18T19:05:15.619+0000",
+    "status": 403,
+    "error": "Forbidden",
+    "message": "Forbidden",
+    "path": "/api/test/admin"
+}
+```
+> Example - Trying to get User access with the "usertest" JWT Token : localhost:8080/api/test/user
+```
+Request Headers:
+Authorization:Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QGJsYWJsYS5jb20iLCJpYXQiOjE1OTUwOTgyMDIsImV4cCI6MTU5NTE4NDYwMn0.57Z2jgmE5WSxxgiD-qbs3j063CgpDxrbQWJGBMZPBPnKYZn-sbEHHmm98LeHep3pPYDk8PZeGk4sP9LDGDxWqg
+```
+> Response
+```
+>>> UserName: usertest, UserEmail: test@blabla.com, Roles: [ROLE_USER] -> got Access to : User Contents
+```
+
 ## Dependencies
 ```xml
 	<dependencies>
