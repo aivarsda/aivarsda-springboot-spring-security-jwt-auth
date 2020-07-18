@@ -8,9 +8,9 @@ For more details, please visit:
 > Request Body
 ```
 {
-	"name": "user1",
-	"username": "user1name",
-	"email": "user1@blabla.com",
+	"name": "test",
+	"username": "usertest",
+	"email": "test@blabla.com",
 	"role": ["ROLE_USER"],
 	"password": "123qwe"
 }
