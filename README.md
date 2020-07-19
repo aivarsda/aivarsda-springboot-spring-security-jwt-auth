@@ -1,10 +1,25 @@
 # Spring Boot JWT Authentication with Spring Security, PostgreSQL & Spring Data JPA.
 
-For more details, please visit:
-> [TODO](https://)
+Related projects:
+> [TODO: Docker and Kubernetes with Minikube.](https://)
+
+> [TODO: Setup and deploy PostgreSQL on the Kupbernetes cluster.](https://)
+
+> [TODO: Vue.js + Vuetify + Vuex with TypeScript boilerplate.](https://)
+
+> [TODO: Deploying Docker image with SpringBoot app on AWS EC2.](https://)
+
+> [TODO: Deploying Docker image with SpringBoot app on Kubernetes.](https://)
+
+## Technologies
+   * Spring Boot (Lombok 1.18.12)
+   * Spring Security
+   * JJWT – 0.9.0
+   * Spring JPA
+   * PostgreSQL
 
 ## User Registration & Authentication 
-##### Register new User : localhost:8080/api/auth/signup
+##### Register new User : POST /api/auth/signup
 > Request Body
 ```
 {
@@ -15,6 +30,7 @@ For more details, please visit:
 	"password": "123qwe"
 }
 ```
+
 > Response
 ```
 {
@@ -43,7 +59,7 @@ user_id |email             |username |user_role_id |user_id |role_id |role_name 
 3       |pm@blabla.com     |pm       |3            |3       |2       |ROLE_PM    |
 4       |test@blabla.com   |usertest |4            |4       |1       |ROLE_USER  |
 
-##### Login with existing User : localhost:8080/api/auth/signin
+##### Login with existing User : POST /api/auth/signin
 > Request Body
 ```
 {
@@ -73,9 +89,10 @@ user_id |email             |username |user_role_id |user_id |role_id |role_name 
 }
 ```
 ##### Testing APIs
-- localhost:8080/api/test/user
-- localhost:8080/api/test/pm
-- localhost:8080/api/test/admin
+- GET /api/test/public
+- GET /api/test/user
+- GET /api/test/pm
+- GET /api/test/admin
 
 > Example - Trying to get Admin access with the "usertest" JWT Token : localhost:8080/api/test/admin
 ```
