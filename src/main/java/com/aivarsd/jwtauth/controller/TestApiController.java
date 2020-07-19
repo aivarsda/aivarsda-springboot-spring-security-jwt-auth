@@ -11,23 +11,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-public class TestRestAPIs extends BaseController {
+public class TestApiController extends BaseController {
+	@GetMapping("/api/test/public")
+	public String publicAccess(@AuthenticationPrincipal UserPrinciple user) {
+		return ">>> " + user.toString() + " -> got Access to : Public content";
+	}
+
 	@GetMapping("/api/test/user")
 	@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
 	public String userAccess(@AuthenticationPrincipal UserPrinciple user) {
-		return ">>> " + user.toString() + " -> got Access to : User Contents";
+		return ">>> " + user.toString() + " -> got Access to : User content";
 	}
 
 	@GetMapping("/api/test/pm")
 	@PreAuthorize("hasRole('ROLE_PM') or hasRole('ROLE_ADMIN')")
 	public String projectManagementAccess(@AuthenticationPrincipal UserPrinciple user) {
-		return ">>> " + user.toString() + " -> got Access to : Project Management Contents";
+		return ">>> " + user.toString() + " -> got Access to : Project Management content";
 	}
 	
 	@GetMapping("/api/test/admin")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String adminAccess(@AuthenticationPrincipal UserPrinciple user) {
-		return ">>> " + user.toString() + " -> got Access to : Admin Contents";
+		return ">>> " + user.toString() + " -> got Access to : Admin content";
 	}
 
 	@Override

@@ -29,7 +29,7 @@ import com.aivarsd.jwtauth.repository.UserRepository;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
-public class AuthRestAPIs extends BaseController {
+public class AuthController extends BaseController {
 
     @Autowired
     UserRepository userRepository;
