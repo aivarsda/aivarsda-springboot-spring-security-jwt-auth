@@ -3,7 +3,7 @@
 Related projects:
 > [TODO: Docker and Kubernetes with Minikube.](https://)
 
-> [TODO: Setup and deploy PostgreSQL on the Kupbernetes cluster.](https://)
+> [TODO: Setup and deploy PostgreSQL on the Kubernetes cluster.](https://)
 
 > [TODO: Vue.js + Vuetify + Vuex with TypeScript boilerplate.](https://)
 
